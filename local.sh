@@ -365,7 +365,7 @@ if [[ `echo "${PATH}" |grep -ic "windows"` -ge '1' ]] && [[ ! "${WSL_ROUTEPATH}"
   read -t 30 -p " [输入[Y/y]回车一次性解决路径问题，任意键回车则用临时路径编译继续编译](不作处理,30秒后使用临时路径编译继续编译)： " Bendi_Wsl
   case ${Bendi_Wsl} in
   [Yy])
-    bash -c  "$(curl -fsSL https://raw.githubusercontent.com/281677160/bendi/main/wsl.sh)"
+    bash -c  "$(curl -fsSL https://raw.githubusercontent.com/lilisore/bendi/main/wsl.sh)"
     exit 0
   ;;
   *)
