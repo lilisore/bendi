@@ -551,7 +551,7 @@ ECHOGG "下载DL文件,请耐心等候..."
 cd ${HOME_PATH} && source ${GITHUB_ENV}
 make defconfig
 rm -rf ${HOME_PATH}/build_logo/build.log
-make -j64 download |& tee ${HOME_PATH}/build_logo/build.log 2>&1
+make -j$(nproc) download |& tee ${HOME_PATH}/build_logo/build.log 2>&1
 
 if [[ `grep -c "ERROR" ${HOME_PATH}/build_logo/build.log` -eq '0' ]] || [[ `grep -c "make with -j1 V=s" ${HOME_PATH}/build_logo/build.log` -eq '0' ]]; then
   print_ok "DL文件下载成功"
@@ -612,9 +612,9 @@ else
   sleep 5
   if [[ `echo "${PATH}" |grep -c "Windows"` -ge '1' ]]; then
     ECHOY "WSL临时路径编译中,请耐心等候..."
-    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin make V=s -j64 |& tee ${HOME_PATH}/build_logo/build.log 2>&1
+    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin make V=s -j$(nproc) |& tee ${HOME_PATH}/build_logo/build.log 2>&1
   else
-     make V=s -j64 |& tee ${HOME_PATH}/build_logo/build.log 2>&1
+     make V=s -j$(nproc) |& tee ${HOME_PATH}/build_logo/build.log 2>&1
   fi
 fi
 
