@@ -608,7 +608,7 @@ if [[ "$(nproc)" -le "12" ]];then
      make V=s -j$(nproc) |& tee ${HOME_PATH}/build_logo/build.log 2>&1
   fi
 else
-  ECHOGG "您的CPU线程超过或等于16线程，强制使用16线程进行编译固件,请耐心等候..."
+  ECHOGG "您的CPU线程超过或等于16线程，强制使用[ $(nproc) ]线程进行编译固件,请耐心等候..."
   sleep 5
   if [[ `echo "${PATH}" |grep -c "Windows"` -ge '1' ]]; then
     ECHOY "WSL临时路径编译中,请耐心等候..."
